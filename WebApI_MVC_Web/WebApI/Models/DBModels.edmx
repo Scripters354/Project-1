@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBMobileAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="About_Malaria">
+          <Key>
+            <PropertyRef Name="About_Malaria_ID" />
+          </Key>
+          <Property Name="About_Malaria_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Malaria_Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Cause">
+          <Key>
+            <PropertyRef Name="Cause_ID" />
+          </Key>
+          <Property Name="Cause_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cause_Name" Type="varchar(max)" />
+          <Property Name="Cause_Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="FAQ_ID" />
+          </Key>
+          <Property Name="FAQ_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FAQ_Question" Type="varchar(max)" />
+          <Property Name="FAQ_Answer" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Help_Line">
+          <Key>
+            <PropertyRef Name="Help_Line_ID" />
+          </Key>
+          <Property Name="Help_Line_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Help_Line_Contact" Type="varchar(max)" Nullable="false" />
+          <Property Name="Help_Line_Practioner" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Malaria_Risk_Zone">
+          <Key>
+            <PropertyRef Name="Malaria_Risk_Zone_ID" />
+          </Key>
+          <Property Name="Malaria_Risk_Zone_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Risk_Zone_Location" Type="varchar(max)" />
+          <Property Name="Risk_Zone" Type="varchar(max)" />
+          <Property Name="Severity" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Post_Update">
+          <Key>
+            <PropertyRef Name="Post_Update_ID" />
+          </Key>
+          <Property Name="Post_Update_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Post_Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Prevention">
+          <Key>
+            <PropertyRef Name="Prevention_ID" />
+          </Key>
+          <Property Name="Prevention_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prevention_Method" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="Publication_ID" />
+          </Key>
+          <Property Name="Publication_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Publication_Description" Type="varchar(max)" />
+          <Property Name="Publication_Link" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Statistic">
+          <Key>
+            <PropertyRef Name="Statistic_ID" />
+          </Key>
+          <Property Name="Statistic_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Malaria_Case" Type="varchar(max)" Nullable="false" />
+          <Property Name="Malaria_Incidence" Type="varchar(max)" Nullable="false" />
+          <Property Name="Malaria_Mortality_Percentage" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Symptom_Sign">
+          <Key>
+            <PropertyRef Name="Symptom_Sign_ID" />
+          </Key>
+          <Property Name="Symptom_Sign_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Symptom_Name" Type="varchar(max)" />
+          <Property Name="Symptom_Description" Type="varchar(max)" />
+          <Property Name="Sign_Name" Type="varchar(max)" />
+          <Property Name="Sign_Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Treatment">
+          <Key>
+            <PropertyRef Name="Treatment_ID" />
+          </Key>
+          <Property Name="Treatment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Treatment_Name" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Role_ID" Type="int" />
+          <Property Name="User_Name" Type="varchar" MaxLength="50" />
+          <Property Name="User_Password" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="GUID" Type="varchar" MaxLength="200" />
+          <Property Name="GUID_Expiry" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User_Role">
+          <Key>
+            <PropertyRef Name="User_Role_ID" />
+          </Key>
+          <Property Name="User_Role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Role_Description" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__User__User_Role___164452B1">
+          <End Role="User_Role" Type="Self.User_Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Role">
+              <PropertyRef Name="User_Role_ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="User_Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBMobileAppModelStoreContainer">
+          <EntitySet Name="About_Malaria" EntityType="Self.About_Malaria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cause" EntityType="Self.Cause" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Help_Line" EntityType="Self.Help_Line" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Malaria_Risk_Zone" EntityType="Self.Malaria_Risk_Zone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post_Update" EntityType="Self.Post_Update" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prevention" EntityType="Self.Prevention" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publication" EntityType="Self.Publication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statistic" EntityType="Self.Statistic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Symptom_Sign" EntityType="Self.Symptom_Sign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Treatment" EntityType="Self.Treatment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Role" EntityType="Self.User_Role" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__User__User_Role___164452B1" Association="Self.FK__User__User_Role___164452B1">
+            <End Role="User_Role" EntitySet="User_Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBMobileAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="About_Malaria">
+          <Key>
+            <PropertyRef Name="About_Malaria_ID" />
+          </Key>
+          <Property Name="About_Malaria_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Malaria_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cause">
+          <Key>
+            <PropertyRef Name="Cause_ID" />
+          </Key>
+          <Property Name="Cause_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cause_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cause_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FAQ">
+          <Key>
+            <PropertyRef Name="FAQ_ID" />
+          </Key>
+          <Property Name="FAQ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FAQ_Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FAQ_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Help_Line">
+          <Key>
+            <PropertyRef Name="Help_Line_ID" />
+          </Key>
+          <Property Name="Help_Line_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Help_Line_Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Help_Line_Practioner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Malaria_Risk_Zone">
+          <Key>
+            <PropertyRef Name="Malaria_Risk_Zone_ID" />
+          </Key>
+          <Property Name="Malaria_Risk_Zone_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Risk_Zone_Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Risk_Zone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Severity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Post_Update">
+          <Key>
+            <PropertyRef Name="Post_Update_ID" />
+          </Key>
+          <Property Name="Post_Update_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Post_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Prevention">
+          <Key>
+            <PropertyRef Name="Prevention_ID" />
+          </Key>
+          <Property Name="Prevention_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prevention_Method" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="Publication_ID" />
+          </Key>
+          <Property Name="Publication_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Publication_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Publication_Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Statistic">
+          <Key>
+            <PropertyRef Name="Statistic_ID" />
+          </Key>
+          <Property Name="Statistic_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Malaria_Case" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Malaria_Incidence" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Malaria_Mortality_Percentage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Symptom_Sign">
+          <Key>
+            <PropertyRef Name="Symptom_Sign_ID" />
+          </Key>
+          <Property Name="Symptom_Sign_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Symptom_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Symptom_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sign_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sign_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Treatment">
+          <Key>
+            <PropertyRef Name="Treatment_ID" />
+          </Key>
+          <Property Name="Treatment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Treatment_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Role_ID" Type="Int32" />
+          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="User_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="GUID_Expiry" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User_Role" Relationship="Self.FK__User__User_Role___164452B1" FromRole="User" ToRole="User_Role" />
+        </EntityType>
+        <EntityType Name="User_Role">
+          <Key>
+            <PropertyRef Name="User_Role_ID" />
+          </Key>
+          <Property Name="User_Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Role_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__User__User_Role___164452B1" FromRole="User_Role" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__User__User_Role___164452B1">
+          <End Role="User_Role" Type="Self.User_Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Role">
+              <PropertyRef Name="User_Role_ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="User_Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBMobileAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="About_Malaria" EntityType="Self.About_Malaria" />
+          <EntitySet Name="Causes" EntityType="Self.Cause" />
+          <EntitySet Name="FAQs" EntityType="Self.FAQ" />
+          <EntitySet Name="Help_Line" EntityType="Self.Help_Line" />
+          <EntitySet Name="Malaria_Risk_Zone" EntityType="Self.Malaria_Risk_Zone" />
+          <EntitySet Name="Post_Update" EntityType="Self.Post_Update" />
+          <EntitySet Name="Preventions" EntityType="Self.Prevention" />
+          <EntitySet Name="Publications" EntityType="Self.Publication" />
+          <EntitySet Name="Statistics" EntityType="Self.Statistic" />
+          <EntitySet Name="Symptom_Sign" EntityType="Self.Symptom_Sign" />
+          <EntitySet Name="Treatments" EntityType="Self.Treatment" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="User_Role" EntityType="Self.User_Role" />
+          <AssociationSet Name="FK__User__User_Role___164452B1" Association="Self.FK__User__User_Role___164452B1">
+            <End Role="User_Role" EntitySet="User_Role" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBMobileAppModelStoreContainer" CdmEntityContainer="DBMobileAppEntities">
+          <EntitySetMapping Name="About_Malaria">
+            <EntityTypeMapping TypeName="DBMobileAppModel.About_Malaria">
+              <MappingFragment StoreEntitySet="About_Malaria">
+                <ScalarProperty Name="About_Malaria_ID" ColumnName="About_Malaria_ID" />
+                <ScalarProperty Name="Malaria_Description" ColumnName="Malaria_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Causes">
+            <EntityTypeMapping TypeName="DBMobileAppModel.Cause">
+              <MappingFragment StoreEntitySet="Cause">
+                <ScalarProperty Name="Cause_ID" ColumnName="Cause_ID" />
+                <ScalarProperty Name="Cause_Name" ColumnName="Cause_Name" />
+                <ScalarProperty Name="Cause_Description" ColumnName="Cause_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAQs">
+            <EntityTypeMapping TypeName="DBMobileAppModel.FAQ">
+              <MappingFragment StoreEntitySet="FAQ">
+                <ScalarProperty Name="FAQ_ID" ColumnName="FAQ_ID" />
+                <ScalarProperty Name="FAQ_Question" ColumnName="FAQ_Question" />
+                <ScalarProperty Name="FAQ_Answer" ColumnName="FAQ_Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Help_Line">
+            <EntityTypeMapping TypeName="DBMobileAppModel.Help_Line">
+              <MappingFragment StoreEntitySet="Help_Line">
+                <ScalarProperty Name="Help_Line_ID" ColumnName="Help_Line_ID" />
+                <ScalarProperty Name="Help_Line_Contact" ColumnName="Help_Line_Contact" />
+                <ScalarProperty Name="Help_Line_Practioner" ColumnName="Help_Line_Practioner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Malaria_Risk_Zone">
+            <EntityTypeMapping TypeName="DBMobileAppModel.Malaria_Risk_Zone">
+              <MappingFragment StoreEntitySet="Malaria_Risk_Zone">
+                <ScalarProperty Name="Malaria_Risk_Zone_ID" ColumnName="Malaria_Risk_Zone_ID" />
+                <ScalarProperty Name="Risk_Zone_Location" ColumnName="Risk_Zone_Location" />
+                <ScalarProperty Name="Risk_Zone" ColumnName="Risk_Zone" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post_Update">
+            <EntityTypeMapping TypeName="DBMobileAppModel.Post_Update">
+              <MappingFragment StoreEntitySet="Post_Update">
+                <ScalarProperty Name="Post_Update_ID" ColumnName="Post_Update_ID" />
+                <ScalarProperty Name="Post_Description" ColumnName="Post_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preventions">
+            <EntityTypeMapping TypeName="DBMobileAppModel.Prevention">
+              <MappingFragment StoreEntitySet="Prevention">
+                <ScalarProperty Name="Prevention_ID" ColumnName="Prevention_ID" />
+                <ScalarProperty Name="Prevention_Method" ColumnName="Prevention_Method" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publications">
+            <EntityTypeMapping TypeName="DBMobileAppModel.Publication">
+              <MappingFragment StoreEntitySet="Publication">
+                <ScalarProperty Name="Publication_ID" ColumnName="Publication_ID" />
+                <ScalarProperty Name="Publication_Description" ColumnName="Publication_Description" />
+                <ScalarProperty Name="Publication_Link" ColumnName="Publication_Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statistics">
+            <EntityTypeMapping TypeName="DBMobileAppModel.Statistic">
+              <MappingFragment StoreEntitySet="Statistic">
+                <ScalarProperty Name="Statistic_ID" ColumnName="Statistic_ID" />
+                <ScalarProperty Name="Malaria_Case" ColumnName="Malaria_Case" />
+                <ScalarProperty Name="Malaria_Incidence" ColumnName="Malaria_Incidence" />
+                <ScalarProperty Name="Malaria_Mortality_Percentage" ColumnName="Malaria_Mortality_Percentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Symptom_Sign">
+            <EntityTypeMapping TypeName="DBMobileAppModel.Symptom_Sign">
+              <MappingFragment StoreEntitySet="Symptom_Sign">
+                <ScalarProperty Name="Symptom_Sign_ID" ColumnName="Symptom_Sign_ID" />
+                <ScalarProperty Name="Symptom_Name" ColumnName="Symptom_Name" />
+                <ScalarProperty Name="Symptom_Description" ColumnName="Symptom_Description" />
+                <ScalarProperty Name="Sign_Name" ColumnName="Sign_Name" />
+                <ScalarProperty Name="Sign_Description" ColumnName="Sign_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Treatments">
+            <EntityTypeMapping TypeName="DBMobileAppModel.Treatment">
+              <MappingFragment StoreEntitySet="Treatment">
+                <ScalarProperty Name="Treatment_ID" ColumnName="Treatment_ID" />
+                <ScalarProperty Name="Treatment_Name" ColumnName="Treatment_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DBMobileAppModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="User_Role_ID" ColumnName="User_Role_ID" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="GUID_Expiry" ColumnName="GUID_Expiry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Role">
+            <EntityTypeMapping TypeName="DBMobileAppModel.User_Role">
+              <MappingFragment StoreEntitySet="User_Role">
+                <ScalarProperty Name="User_Role_ID" ColumnName="User_Role_ID" />
+                <ScalarProperty Name="User_Role_Description" ColumnName="User_Role_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

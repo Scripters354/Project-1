@@ -1,0 +1,39 @@
+﻿@model MvC.Models.mvcRiskZonesModel
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+<head>
+    <link href="~/PortView/css/style.css" rel='stylesheet' type='text/css' />
+
+    <link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet">
+</head>
+<br /><br />
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.Malaria_Risk_Zone_ID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Risk_Zone, "Risk Zone")
+        @Html.EditorFor(model => model.Risk_Zone)
+        @Html.ValidationMessageFor(model => model.Risk_Zone)
+
+        @Html.LabelFor(model => model.Risk_Zone_Location)
+        @Html.EditorFor(model => model.Risk_Zone_Location)
+        @Html.ValidationMessageFor(model => model.Risk_Zone_Location)
+
+    </div>
+
+        <div class="form-group">
+            @*<input type="submit" value="Submit" class="btn-button" />*@
+            <button type="submit" value=""><i class="fas fa-save" style="font-size:20px;color:darkblue"></i></button>
+            <button type="reset" value="Clear"><i class="fas fa-broom" style="font-size:20px;color:darkblue"></i>Clear</button>
+        </div>
+    }
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}
+

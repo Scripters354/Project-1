@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MvC.Models.mvcStaticModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <link href="~/PortView/css/style.css" rel='stylesheet' type='text/css' />
+
+    <link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet">
+</head>
+<h2>Malaria Statistics</h2>
+<br /><br />
+
+<p>
+    <a href="@Url.Action("AddOrEdit" , "mvcStats")" class="btn-btn-default"><i class="fas fa-plus" style="font-size:48px"></i></a>
+</p>
+<table class="table table-hover table-dark">
+    <thead class="table-heading" style="color:white;font-size:15px">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Malaria_Case)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Malaria_Incidence)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Malaria_Mortality_Percentage)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Malaria_Case)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Malaria_Incidence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Malaria_Mortality_Percentage)
+            </td>
+            <td>
+                <a href="@Url.Action("AddOrEdit" , "mvcStats" , new { id = item.Statistic_ID})" class="btn btn-default"><i class="fas fa-edit"></i>Edit</a>
+                <a onclick="Delete(@item.Statistic_ID)" class="btn btn-default">Remove</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]' //passing tempdata KEy
+            if (successMessage != '') //if succMsg not empty show alert
+                alertify.success(successMessage);
+        });
+            function Delete(id){
+                alertify.confirm('There isnt a recycle bin', 'You sure about that?', function () {
+                    window.location.href = '@Url.Action("Delete" , "mvcStats")/' + id;
+                }, null);
+            }
+
+    </script>
+}

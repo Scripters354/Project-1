@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - M-KNOW</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="~/Content/alertifyjs/alertify.min.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/themes/default.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container" style="margin-bottom:100px">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("M-KNOW", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @if(Context.User.Identity.IsAuthenticated)
+                    {
+                    <li>@Html.ActionLink("About Malaria", "Index", "About")</li>
+                    <li>@Html.ActionLink("Cause", "Index", "mvcCause")</li>
+                    <li>@Html.ActionLink("Symptoms", "Index", "mvcSymptom")</li>
+                    <li>@Html.ActionLink("Treatment", "Index", "mvcTreatment")</li>
+                    <li>@Html.ActionLink("Prevention", "Index", "mvcPrevention")</li>
+                    <li>@Html.ActionLink("Publications", "Index", "mvcPublication")</li>
+                    <li>@Html.ActionLink("Risk Zones", "Index", "mvcRiskZone")</li>
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Malaria Backend Application</p>
+                </footer>
+            </div>
+
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            <script src="~/Scripts/alertify.min.js"></script>
+            @RenderSection("scripts", required: false)
+        </div><br /><br /><br /><br />
+    </div>
+</body>
+</html>

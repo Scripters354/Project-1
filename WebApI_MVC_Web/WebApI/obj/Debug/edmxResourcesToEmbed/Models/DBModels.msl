@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBMobileAppModelStoreContainer" CdmEntityContainer="DBMobileAppEntities">
+    <EntitySetMapping Name="About_Malaria">
+      <EntityTypeMapping TypeName="DBMobileAppModel.About_Malaria">
+        <MappingFragment StoreEntitySet="About_Malaria">
+          <ScalarProperty Name="About_Malaria_ID" ColumnName="About_Malaria_ID" />
+          <ScalarProperty Name="Malaria_Description" ColumnName="Malaria_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Causes">
+      <EntityTypeMapping TypeName="DBMobileAppModel.Cause">
+        <MappingFragment StoreEntitySet="Cause">
+          <ScalarProperty Name="Cause_ID" ColumnName="Cause_ID" />
+          <ScalarProperty Name="Cause_Name" ColumnName="Cause_Name" />
+          <ScalarProperty Name="Cause_Description" ColumnName="Cause_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAQs">
+      <EntityTypeMapping TypeName="DBMobileAppModel.FAQ">
+        <MappingFragment StoreEntitySet="FAQ">
+          <ScalarProperty Name="FAQ_ID" ColumnName="FAQ_ID" />
+          <ScalarProperty Name="FAQ_Question" ColumnName="FAQ_Question" />
+          <ScalarProperty Name="FAQ_Answer" ColumnName="FAQ_Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Help_Line">
+      <EntityTypeMapping TypeName="DBMobileAppModel.Help_Line">
+        <MappingFragment StoreEntitySet="Help_Line">
+          <ScalarProperty Name="Help_Line_ID" ColumnName="Help_Line_ID" />
+          <ScalarProperty Name="Help_Line_Contact" ColumnName="Help_Line_Contact" />
+          <ScalarProperty Name="Help_Line_Practioner" ColumnName="Help_Line_Practioner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Malaria_Risk_Zone">
+      <EntityTypeMapping TypeName="DBMobileAppModel.Malaria_Risk_Zone">
+        <MappingFragment StoreEntitySet="Malaria_Risk_Zone">
+          <ScalarProperty Name="Malaria_Risk_Zone_ID" ColumnName="Malaria_Risk_Zone_ID" />
+          <ScalarProperty Name="Risk_Zone_Location" ColumnName="Risk_Zone_Location" />
+          <ScalarProperty Name="Risk_Zone" ColumnName="Risk_Zone" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Post_Update">
+      <EntityTypeMapping TypeName="DBMobileAppModel.Post_Update">
+        <MappingFragment StoreEntitySet="Post_Update">
+          <ScalarProperty Name="Post_Update_ID" ColumnName="Post_Update_ID" />
+          <ScalarProperty Name="Post_Description" ColumnName="Post_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Preventions">
+      <EntityTypeMapping TypeName="DBMobileAppModel.Prevention">
+        <MappingFragment StoreEntitySet="Prevention">
+          <ScalarProperty Name="Prevention_ID" ColumnName="Prevention_ID" />
+          <ScalarProperty Name="Prevention_Method" ColumnName="Prevention_Method" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publications">
+      <EntityTypeMapping TypeName="DBMobileAppModel.Publication">
+        <MappingFragment StoreEntitySet="Publication">
+          <ScalarProperty Name="Publication_ID" ColumnName="Publication_ID" />
+          <ScalarProperty Name="Publication_Description" ColumnName="Publication_Description" />
+          <ScalarProperty Name="Publication_Link" ColumnName="Publication_Link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statistics">
+      <EntityTypeMapping TypeName="DBMobileAppModel.Statistic">
+        <MappingFragment StoreEntitySet="Statistic">
+          <ScalarProperty Name="Statistic_ID" ColumnName="Statistic_ID" />
+          <ScalarProperty Name="Malaria_Case" ColumnName="Malaria_Case" />
+          <ScalarProperty Name="Malaria_Incidence" ColumnName="Malaria_Incidence" />
+          <ScalarProperty Name="Malaria_Mortality_Percentage" ColumnName="Malaria_Mortality_Percentage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Symptom_Sign">
+      <EntityTypeMapping TypeName="DBMobileAppModel.Symptom_Sign">
+        <MappingFragment StoreEntitySet="Symptom_Sign">
+          <ScalarProperty Name="Symptom_Sign_ID" ColumnName="Symptom_Sign_ID" />
+          <ScalarProperty Name="Symptom_Name" ColumnName="Symptom_Name" />
+          <ScalarProperty Name="Symptom_Description" ColumnName="Symptom_Description" />
+          <ScalarProperty Name="Sign_Name" ColumnName="Sign_Name" />
+          <ScalarProperty Name="Sign_Description" ColumnName="Sign_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Treatments">
+      <EntityTypeMapping TypeName="DBMobileAppModel.Treatment">
+        <MappingFragment StoreEntitySet="Treatment">
+          <ScalarProperty Name="Treatment_ID" ColumnName="Treatment_ID" />
+          <ScalarProperty Name="Treatment_Name" ColumnName="Treatment_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DBMobileAppModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="User_Role_ID" ColumnName="User_Role_ID" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="GUID_Expiry" ColumnName="GUID_Expiry" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Role">
+      <EntityTypeMapping TypeName="DBMobileAppModel.User_Role">
+        <MappingFragment StoreEntitySet="User_Role">
+          <ScalarProperty Name="User_Role_ID" ColumnName="User_Role_ID" />
+          <ScalarProperty Name="User_Role_Description" ColumnName="User_Role_Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

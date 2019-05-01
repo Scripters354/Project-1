@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MvC.Models.mvcSymptomModel>
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <link href="~/PortView/css/style.css" rel='stylesheet' type='text/css' />
+
+    <link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet">
+</head>
+<h2>Signs and Symptoms</h2>
+<br /><br />
+
+<p>
+    <a href="@Url.Action("AddOrEdit" , "mvcSymptom")" class="btn-btn-default"><i class="fas fa-plus" style="font-size:48px"></i></a>
+</p>
+<table class="table table-hover table-dark">
+    <thead class="table-heading" style="color:white;font-size:15px">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Symptom_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Symptom_Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sign_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sign_Description)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Symptom_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Symptom_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sign_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sign_Description)
+            </td>
+            <td>
+                <a href="@Url.Action("AddOrEdit" , "mvcSymptom" , new { id = item.Symptom_Sign_ID})" class="btn btn-default"><i class="fas fa-edit"></i>Edit</a>
+                <a onclick="Delete(@item.Symptom_Sign_ID)" class="btn btn-default">Remove</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+</table>
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]' //passing tempdata KEy
+            if (successMessage != '') //if succMsg not empty show alert
+                alertify.success(successMessage);
+        });
+            function Delete(id){
+                alertify.confirm('There isnt a recycle bin', 'You sure about that?', function () {
+                    window.location.href = '@Url.Action("Delete" , "mvcSymptom")/' + id;
+                }, null);
+            }
+
+    </script>
+}

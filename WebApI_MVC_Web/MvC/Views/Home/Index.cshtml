@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<head>
+    <link href="~/PortView/css/style.css" rel='stylesheet' type='text/css' />
+
+    <link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet">
+</head>
+
+
+
+
+
+<div class="jumbotron">
+    <h1>M-KNOW</h1>
+    <p class="lead">Keep Users up to date, Access a information and post updates and emergency calls in real-time</p>
+    <p style="align-content:center"><a href="@Url.Action("Index" , "PostUpdate")" class="btn btn-primary btn-lg">Post Update &raquo;</a><a href="@Url.Action("Index" , "mvcHelp")" class="btn btn-primary btn-lg">HelpLine Info &raquo;</a><a href="@Url.Action("Index" , "mvcFAQ")" class="btn btn-primary btn-lg">FAQ Update &raquo;</a> <a href="@Url.Action("Index", "mvcStats")" class="btn btn-primary btn-lg">Statistics &raquo;</a></p>
+</div>

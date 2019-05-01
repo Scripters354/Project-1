@@ -1,0 +1,40 @@
+﻿@model MvC.Models.mvcCauseModel
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+<head>
+    <link href="~/PortView/css/style.css" rel='stylesheet' type='text/css' />
+
+    <link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet">
+</head>
+<br /><br />
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.Cause_ID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cause_Name, "Cause Name")
+        @Html.EditorFor(model => model.Cause_Name)
+        @Html.ValidationMessageFor(model => model.Cause_Name)
+
+        @Html.LabelFor(model => model.Cause_Description, "Cause Description")
+        @Html.EditorFor(model => model.Cause_Description)
+        @Html.ValidationMessageFor(model => model.Cause_Description)
+
+       
+    </div>
+
+        <div class="form-group">
+            @*<input type="submit" value="Submit" class="btn-button" />*@
+            <button type="submit" value=""><i class="fas fa-save" style="font-size:20px;color:darkblue"></i></button>
+            <button type="reset" value="Clear"><i class="fas fa-broom" style="font-size:20px;color:darkblue"></i>Clear</button>
+        </div>
+    }
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}
+

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MvC.Models.mvcFAQModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <link href="~/PortView/css/style.css" rel='stylesheet' type='text/css' />
+
+    <link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet">
+</head>
+<h2>Frequently asked questions</h2>
+
+<br /><br />
+
+<p>
+    <a href="@Url.Action("AddOrEdit" , "mvcFAQ")" class="btn-btn-default"><i class="fas fa-plus" style="font-size:48px"></i></a>
+</p>
+<table class="table table-hover table-dark">
+    <thead class="table-heading" style="color:white;font-size:15px">
+        <tr>
+
+            <th>
+                Question
+            </th>
+            <th>
+                Answer
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FAQ_Question)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FAQ_Answer)
+            </td>
+            <td>
+                <a href="@Url.Action("AddOrEdit" , "mvcFAQ" , new { id = item.FAQ_ID})" class="btn btn-default"><i class="fas fa-edit"></i>Edit</a>
+                <a onclick="Delete(@item.FAQ_ID)" class="btn btn-default">Remove</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]' //passing tempdata KEy
+            if (successMessage != '') //if succMsg not empty show alert
+                alertify.success(successMessage);
+        });
+            function Delete(id){
+                alertify.confirm('There isnt a recycle bin', 'You sure about that?', function () {
+                    window.location.href = '@Url.Action("Delete" , "mvcFAQ")/' + id;
+                }, null);
+            }
+
+    </script>
+}

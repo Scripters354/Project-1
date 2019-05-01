@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MvC.Models.mvcTreatmentModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <link href="~/PortView/css/style.css" rel='stylesheet' type='text/css' />
+
+    <link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet">
+</head>
+<h2>Malaria Treatment</h2>
+<br /><br />
+
+<p>
+    <a href="@Url.Action("AddOrEdit" , "mvcTreatment")" class="btn-btn-default"><i class="fas fa-plus" style="font-size:48px"></i></a>
+</p>
+<table class="table table-hover table-dark">
+    <thead class="table-heading" style="color:white;font-size:15px">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Treatment_Name)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Treatment_Name)
+            </td>
+            <td>
+                <a href="@Url.Action("AddOrEdit" , "mvcTreatment" , new { id = item.Treatment_ID})" class="btn btn-default"><i class="fas fa-edit"></i>Edit</a>
+                <a onclick="Delete(@item.Treatment_ID)" class="btn btn-default">Remove</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]' //passing tempdata KEy
+            if (successMessage != '') //if succMsg not empty show alert
+                alertify.success(successMessage);
+        });
+            function Delete(id){
+                alertify.confirm('There isnt a recycle bin', 'You sure about that?', function () {
+                    window.location.href = '@Url.Action("Delete" , "mvcTreatment")/' + id;
+                }, null);
+            }
+
+    </script>
+}

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBMobileAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="About_Malaria">
+    <Key>
+      <PropertyRef Name="About_Malaria_ID" />
+    </Key>
+    <Property Name="About_Malaria_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Malaria_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Cause">
+    <Key>
+      <PropertyRef Name="Cause_ID" />
+    </Key>
+    <Property Name="Cause_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cause_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cause_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="FAQ">
+    <Key>
+      <PropertyRef Name="FAQ_ID" />
+    </Key>
+    <Property Name="FAQ_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FAQ_Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FAQ_Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Help_Line">
+    <Key>
+      <PropertyRef Name="Help_Line_ID" />
+    </Key>
+    <Property Name="Help_Line_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Help_Line_Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Help_Line_Practioner" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Malaria_Risk_Zone">
+    <Key>
+      <PropertyRef Name="Malaria_Risk_Zone_ID" />
+    </Key>
+    <Property Name="Malaria_Risk_Zone_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Risk_Zone_Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Risk_Zone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Severity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Post_Update">
+    <Key>
+      <PropertyRef Name="Post_Update_ID" />
+    </Key>
+    <Property Name="Post_Update_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Post_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Prevention">
+    <Key>
+      <PropertyRef Name="Prevention_ID" />
+    </Key>
+    <Property Name="Prevention_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prevention_Method" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Publication">
+    <Key>
+      <PropertyRef Name="Publication_ID" />
+    </Key>
+    <Property Name="Publication_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Publication_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Publication_Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Statistic">
+    <Key>
+      <PropertyRef Name="Statistic_ID" />
+    </Key>
+    <Property Name="Statistic_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Malaria_Case" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Malaria_Incidence" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Malaria_Mortality_Percentage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Symptom_Sign">
+    <Key>
+      <PropertyRef Name="Symptom_Sign_ID" />
+    </Key>
+    <Property Name="Symptom_Sign_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Symptom_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Symptom_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Sign_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Sign_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Treatment">
+    <Key>
+      <PropertyRef Name="Treatment_ID" />
+    </Key>
+    <Property Name="Treatment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Treatment_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Role_ID" Type="Int32" />
+    <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="User_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GUID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="GUID_Expiry" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User_Role" Relationship="Self.FK__User__User_Role___164452B1" FromRole="User" ToRole="User_Role" />
+  </EntityType>
+  <EntityType Name="User_Role">
+    <Key>
+      <PropertyRef Name="User_Role_ID" />
+    </Key>
+    <Property Name="User_Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Role_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__User__User_Role___164452B1" FromRole="User_Role" ToRole="User" />
+  </EntityType>
+  <Association Name="FK__User__User_Role___164452B1">
+    <End Role="User_Role" Type="Self.User_Role" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Role">
+        <PropertyRef Name="User_Role_ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="User_Role_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBMobileAppEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="About_Malaria" EntityType="Self.About_Malaria" />
+    <EntitySet Name="Causes" EntityType="Self.Cause" />
+    <EntitySet Name="FAQs" EntityType="Self.FAQ" />
+    <EntitySet Name="Help_Line" EntityType="Self.Help_Line" />
+    <EntitySet Name="Malaria_Risk_Zone" EntityType="Self.Malaria_Risk_Zone" />
+    <EntitySet Name="Post_Update" EntityType="Self.Post_Update" />
+    <EntitySet Name="Preventions" EntityType="Self.Prevention" />
+    <EntitySet Name="Publications" EntityType="Self.Publication" />
+    <EntitySet Name="Statistics" EntityType="Self.Statistic" />
+    <EntitySet Name="Symptom_Sign" EntityType="Self.Symptom_Sign" />
+    <EntitySet Name="Treatments" EntityType="Self.Treatment" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="User_Role" EntityType="Self.User_Role" />
+    <AssociationSet Name="FK__User__User_Role___164452B1" Association="Self.FK__User__User_Role___164452B1">
+      <End Role="User_Role" EntitySet="User_Role" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

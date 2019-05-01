@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MvC.Models.mvcPublicationModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <link href="~/PortView/css/style.css" rel='stylesheet' type='text/css' />
+
+    <link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet">
+</head>
+<h2>Publications on Malaria</h2>
+<br /><br />
+
+<p>
+    <a href="@Url.Action("AddOrEdit" , "mvcPublication")" class="btn-btn-default"><i class="fas fa-plus" style="font-size:48px"></i></a>
+</p>
+<table class="table table-hover table-dark">
+    <thead class="table-heading" style="color:white;font-size:15px">
+        <tr>
+
+            <th>
+                Publication Description
+            </th>
+            <th>
+                Publication Link
+            </th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publication_Description)
+                </td>
+                <td>
+                    <a href="@Html.DisplayFor(modelItem => item.Publication_Link)"> Click here for more information</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("AddOrEdit" , "mvcPublication" , new { id = item.Publication_ID})" class="btn btn-default"><i class="fas fa-edit"></i>Edit</a>
+                    <a onclick="Delete(@item.Publication_ID)" class="btn btn-default">Remove</a>
+                </td>
+            </tr>
+        }
+
+</table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]' //passing tempdata KEy
+            if (successMessage != '') //if succMsg not empty show alert
+                alertify.success(successMessage);
+        });
+            function Delete(id){
+                alertify.confirm('There isnt a recycle bin', 'You sure about that?', function () {
+                    window.location.href = '@Url.Action("Delete" , "mvcPublication")/' + id;
+                }, null);
+            }
+
+    </script>
+}
